@@ -1,0 +1,206 @@
+/* ==================== BOTÃO HAMBÚRGUER ==================== */
+.abrir-menu {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 5px;
+  z-index: 2000;
+  transition: transform 0.4s ease-in-out;
+}
+
+.abrir-menu span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background: #000;
+  border-radius: 2px;
+  transition: all 0.4s ease-in-out;
+}
+
+/* Move o botão para a direita quando o menu está aberto */
+.abrir-menu.aberto {
+  transform: translateX(170px);
+}
+
+.abrir-menu.ativo span:nth-child(2) {
+  opacity: 0;
+}
+
+.abrir-menu.ativo span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.abrir-menu.ativo span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Animação de rotação para o "X" quando o mouse passa sobre ele */
+.abrir-menu.ativo:hover {
+  background-color: rgba(180, 200, 220, 0.4);
+  border-radius: 50%; /* Adicione esta linha para criar a forma circular */
+}
+
+/* Só aparece em telas pequenas */
+@media (min-width: 769px) {
+  .abrir-menu {
+    display: none;
+  }
+
+  header > nav[aria-label="Menu de navegação principal"] {
+    display: block; /* Garante que o menu de desktop apareça */
+  }
+}
+
+/* Menu lateral oculto por padrão */
+.menu-lateral {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100%;
+  background-color: #aaaaaa;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem 1rem;
+  font-family: 'Baloo 2', cursive;
+  overflow-y: auto;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1000;
+}
+
+/* Quando aberto */
+.menu-lateral.aberto {
+  transform: translateX(0);
+}
+
+/* Overlay */
+.overlay-menu {
+  display: none;
+  position: fixed;
+  inset: 0; /* cobre tela toda */
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
+}
+
+
+/* Lista e itens */
+.menu-lateral ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+.menu-lateral ul li {
+  margin: 20px 0;
+  padding: 8px 10px;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.menu-lateral ul li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-lateral ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: #FFE135;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.menu-lateral ul li a:hover::after {
+  transform: scaleX(1);
+}
+
+.menu-lateral ul li a:focus,
+.menu-lateral ul li a:active {
+  outline: none;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  transform: translateX(4px);
+  padding-left: 14px;
+}
+
+.menu-lateral ul li a {
+  -webkit-tap-highlight-color: transparent;  /* remove highlight cinza no mobile */
+  -webkit-focus-ring-color: transparent;     /* remove anel de foco azul no Safari/Chrome */
+  -webkit-tap-highlight-color: transparent; /* remove o cinza no toque em dispositivos móveis */
+  outline: none; /* remove borda de foco em navegadores que ainda aplicam */
+  background-color: transparent;
+}
+
+/* Ícones se quiser usar Font Awesome */
+.menu-lateral i {
+  color: #000000;
+}
+
+.overlay-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background: rgba(0, 0, 0, 0.4); /* tom escuro e translúcido */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  z-index: 900;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* Ativo com menu aberto */
+.menu-lateral.aberto ~ .overlay-menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Adicionada a media query para o botão de menu, para corrigir o problema original */
+@media (max-width: 768px) {
+  .abrir-menu {
+    opacity: 1; /* Mostra o botão */
+    visibility: visible; /* Torna o botão visível */
+  }
+  nav > ul {
+    display: none;
+  }
+  /* Remove a classe .mostrar-mobile se ela for usada em algum CSS externo */
+  .abrir-menu.mostrar-mobile {
+      opacity: 1 !important;
+      visibility: visible !important;
+  }
+  .imagem-fixa {
+    display: none;
+  }
+  .hero-content h1 {
+    font-size: 2.7rem;
+  }
+  .hero-content p {
+    font-size: 1rem;
+  } 
+
+}

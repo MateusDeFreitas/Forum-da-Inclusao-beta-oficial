@@ -1,0 +1,786 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #F5F5F5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between; /* Alinha o primeiro item à esquerda e o último à direita */
+  align-items: center;
+  gap: 15px; /* Pode remover se não quiser espaço extra no desktop */
+  height: 80px;
+  background-color: #ffffff;
+  padding: 15px 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Padrão para telas grandes (desktop) */
+
+
+/* Telas médias (tablets) */
+@media (max-width: 1310px) {
+  .footer-content {
+    justify-content: space-between;
+  }
+
+  .filtros-galeria {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  nav ul {
+    gap: 12px;        
+    flex-wrap: nowrap;
+  }
+
+  nav ul li a {
+    font-size: 0.9rem;    
+    padding: 4px 8px;     
+  }
+}
+
+/* Telas pequenas (celulares) */
+@media (max-width: 768px) {
+  header {
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    padding: 10px 20px;
+    gap: 0;
+    flex-wrap: nowrap;
+  }
+  .logo {
+    margin: auto; 
+  }
+
+  .logo img {
+    width: 48px;
+    height: auto;
+  }
+  #imagem-logo {
+    width: 60px;
+    height: auto;
+  }
+
+  header > nav[aria-label="Menu de navegação principal"] {
+    display: none;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;   /* Destaque maior no hero */
+    margin-bottom: 20px;
+    text-align: center;  /* Centraliza para impacto */
+    color: #ffffff;         /* Mantém contraste alto */
+  }
+  
+  .cards-container,
+  .depoimentos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .eventos-grid {
+    justify-items: center;
+  }
+
+  .evento-card {
+    max-width: 280px;
+    width: 100%;
+  }
+}
+
+h1, h2, h3 {
+  font-family: 'Montserrat', sans-serif; /* Fonte limpa e acessível */
+  font-weight: 700; /* Títulos fortes */
+  line-height: 1.2;
+  margin: 0 0 20px 0;
+}
+
+
+.imagem-fixa {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  transition: transform 0.3s ease;
+  z-index: 999;
+  cursor: pointer;
+}
+
+.imagem-fixa:hover {
+  transform: scale(1.2); /* aumenta 20% ao passar o mouse */
+}
+
+.logo {
+  height: 100%;
+  font-family: 'Baloo 2', cursive;
+  font-size: 28px;
+  color: white;
+  display: flex;
+  align-items: center;
+}
+
+.logo a {
+  height: 100%;
+  color: black;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo a:hover {
+  color: #4169E1;
+}
+
+#imagem-logo {
+  height: 80%;
+  width: auto;
+  margin-right: 10px;
+}
+
+nav ul {
+  display: flex;
+  flex-wrap: wrap; /* permite quebrar apenas se for necessário */
+  gap: 20px;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a,
+.menu-lateral ul li a {
+  position: relative;
+  text-decoration: none;
+  white-space: nowrap;
+  padding: 6px 10px;
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  transition: color 0.3s ease;
+  overflow: hidden;
+}
+
+nav ul li a::after,
+.menu-lateral ul li a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background: #FFE135;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+/* Hover com linha */
+nav ul li a:hover::after,
+.menu-lateral ul li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Linha ativada também no ativo */
+nav ul li a.ativo::after,
+.menu-lateral ul li a.ativo::after {
+  transform: scaleX(1);
+}
+
+/* Link da página atual */
+nav ul li a.ativo,
+.menu-lateral ul li a.ativo {
+  color: #ff0000;
+  font-weight: bold;
+}
+
+nav ul li a.ativo i,
+.menu-lateral ul li a.ativo i {
+  color: #ff0000;
+}
+
+nav ul li a:hover {
+  color: #ff0000;
+}
+
+
+/* Animação de entrada */
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.logo-menu-img {
+  width: 60px;
+  height: auto;
+  animation: bounce 1.5s ease;
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08) rotate(-2deg); }
+  100% { transform: scale(1); }
+}
+
+
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  text-align: left;
+  padding: 20px;
+  overflow: hidden;
+  color: black;
+}
+
+/* Container do slider */
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden; /* evita scroll em imagens maiores */
+}
+
+/* Cada slide */
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+/* Imagens do slide */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(70%); /* escurece a imagem para dar contraste ao texto */
+}
+
+/* Overlay extra (camada escura sobre todas as imagens) */
+.slider::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0); /* overlay preto 40% */
+  z-index: 1;
+}
+
+/* Mostra a imagem ativa */
+.slide.active {
+  opacity: 1;
+}
+
+/* Conteúdo da hero por cima das imagens */
+.hero-content {
+  position: relative;
+  z-index: 2; /* acima do overlay e das imagens */
+  color: #fff; /* texto branco para contraste */
+}
+
+/* Opcional: sombra escura para melhorar contraste do texto */
+.slider::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8) 0%,     /* 80% preto na esquerda */
+    rgba(0, 0, 0, 0.2) 100%    /* 20% preto na direita */
+  );
+  z-index: 1;
+}
+
+.hero-content h1 {
+  font-family: "Sora", sans-serif;
+  font-weight: 600;
+  margin-top: 35vh;
+  font-size: 4.8rem;   
+  margin-bottom: 20px;
+  text-align: center;  
+  color: red;      
+}
+
+.hero-content h1 .light {
+  font-family: "Mulish", sans-serif;
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+  font-weight: 200;    
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.botoes-hero button {
+  min-width: 140px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  white-space: nowrap;
+  text-align: center;
+  flex: 1 1 auto;
+}
+
+
+/* ===================== SEÇÃO: SOBRE O FÓRUM / HISTÓRIA (NOVO CSS) ===================== */
+
+.hero-sobre {
+  padding: 60px 20px;
+  background-color: #ffffff;
+}
+
+.historia-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: stretch; /* Garante que as colunas tenham a mesma altura */
+}
+
+/* Coluna da Imagem: Agora definimos o tamanho e o fundo na tag <a> */
+.historia-image-wrapper {
+  flex: 1.5; /* Ocupa mais espaço que o texto */
+  min-height: 450px; 
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+/* O elemento <a> dentro do wrapper recebe a imagem de fundo */
+#imagem-sobre {
+  display: block; 
+  width: 100%;
+  /* GARANTE QUE O ELEMENTO TENHA 100% DA ALTURA DO PAI (300px no mobile) */
+  height: 100%; 
+  
+  /* Configuração da Imagem de Fundo (SUSTITUA o caminho pela sua URL final) */
+  background-image: url('../assets/imagem-sobre.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+
+/* Coluna do Conteúdo (Texto e Botões) */
+.historia-content {
+  flex: 1; /* Ocupa a parte menor do espaço */
+  padding: 20px 0; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centraliza o conteúdo verticalmente */
+}
+
+.historia-content h2 {
+  font-size: 2.5rem;
+  color: #000000;
+  margin-bottom: 25px;
+  line-height: 1.1;
+}
+
+.historia-content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.historia-content p:last-of-type {
+  margin-bottom: 40px;
+}
+
+.historia-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap; 
+}
+
+/* Estilo do botão secundário (Equipe e Parceiros) */
+.historia-buttons .secondary-btn {
+  background-color: transparent;
+  border: 2px solid #FFE135; /* Contorno amarelo */
+  color: #444;
+  padding: 10px 25px;
+}
+
+/* Garante que os botões usem as classes globais 'btn' e 'glare' corretamente */
+.historia-buttons .btn {
+  padding: 12px 30px;
+}
+
+/* Media Query para Mobile */
+@media (max-width: 900px) {
+  .historia-container {
+    flex-direction: column; /* Pilha as colunas */
+    gap: 0;
+  }
+  
+  .historia-content {
+    text-align: center;
+  }
+
+  .historia-buttons {
+    justify-content: center;
+  }
+
+  .historia-image-wrapper {
+    min-height: 300px; /* Altura mínima para a imagem no mobile */
+    order: -1; /* Coloca a imagem acima do texto no mobile */
+    margin-bottom: 40px;
+    /* CORREÇÃO: Remova o flex-basis: auto; se o seu IDE estiver gerando */ 
+  }
+
+  #imagem-sobre {
+    height: 300px; /* Garante que o A tenha uma altura VIZÍVEL no mobile */
+  }
+}
+
+/* Diferenciais */
+.diferenciais {
+    padding: 50px 20px;
+    background-color: white;
+    text-align: center;
+}
+
+.diferenciais h2 {
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.cards-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 300px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card i {
+    font-size: 2.5rem;
+    color: #000000;
+    margin-bottom: 15px;
+}
+
+/* Eventos */
+.eventos {
+  padding: 50px 20px;
+}
+
+.eventos h2 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 40px;
+}
+
+/* Grade de cards */
+.eventos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(px, 1fr)); /* colunas fluídas */
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  place-items: center; /* alinha conteúdo dentro de cada célula */
+}
+
+/* Estilo dos cards */
+.evento-card {
+  height: 350px;
+  width: 100%;
+  max-width: 100%; /* permite preencher toda a célula */
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+  height: 350px; /* <--- NOVO: Defina a altura total do card aqui */
+  display: flex; /* Adicione display flex */
+  flex-direction: column; /* Organize os itens em coluna */
+}
+
+.evento-card:hover {
+  transform: scale(1.02);
+}
+
+.evento-card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 100%;
+  height: 270px !important;
+  object-fit: cover;
+  display: block;
+}
+
+.evento-card h3 {
+  text-align: center;
+  padding: 15px;
+  background-color: white;
+  font-size: 1.1rem;
+  color: #333;
+  flex-shrink: 0; /* Impede que o título encolha */
+}
+
+.parallax-card {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+.parallax-card-content {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  height: 1000px;
+}
+
+.evento-card .parallax-card-content a {
+  display: flex;       /* Faz o link se comportar como um contêiner flexível */
+  flex: 1;             /* <-- NOVO E CORRETO: Faz o link crescer para preencher o espaço */
+}
+
+.parallax-card img {
+  transform: translateZ(40px);
+  transition: transform 0.2s ease-out;
+}
+
+.parallax-card h3 {
+  transform: translateZ(20px);
+  transition: transform 0.2s ease-out;
+}
+
+/* Ajustes para telas bem pequenas */
+@media (max-width: 500px) {
+  .eventos-grid {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+
+  .evento-card img {
+    height: 200px;
+  }
+
+  .evento-card h3 {
+    font-size: 1rem;
+    padding: 12px;
+  }
+}
+
+/* Depoimentos */
+.depoimentos {
+    padding: 50px 20px;
+    background-color: #f8f9fa;
+}
+
+.depoimentos h2 {
+    text-align: center;
+    color: #000000;
+    margin-bottom: 40px;
+}
+
+.depoimentos-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.depoimento {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.depoimento p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.depoimento span {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    display: flex;
+    margin-top: auto;
+    background-color: white;
+    color: rgb(0, 0, 0);
+    padding: 30px 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+footer > img {
+  width: 200px;
+  margin: auto;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+
+.eventos-grid {
+  display: grid;
+  /*grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));*/
+  gap: 4%;
+  padding: 10px 0;
+}
+
+.evento-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 100%;
+}
+
+.evento-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.evento-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  display: block;
+}
+
+.evento-card p {
+  margin: 10px 0;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  color: #444;
+}
+
+.categoria h4 {
+  font-size: 22px;
+  font-family: 'Baloo 2', cursive;
+  color: #444;
+  margin: 40px 0 10px;
+  padding-left: 10px;
+  border-left: 5px solid #ffaad4; /* destaque visual com cor */
+}
+
+.categoria h3 {
+  font-size: 26px;
+  font-family: 'Baloo 2', cursive;
+  color: #2b2b2b;
+  margin-top: 50px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.categoria h3 i {
+  color: #ffaad4;
+  font-size: 26px;
+}
+
+#btn-topo {
+  position: fixed;
+  bottom: 80px; /* posição inicial quando o gato ainda não interfere */
+  right: 10px;
+  z-index: 999;
+  background: none;
+  border: none;
+  padding: 0;
+  display: block;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
+  color: #000; /* cor padrão */
+  transition: opacity 0.4s ease, visibility 0.4s ease, bottom 0.3s ease;
+}
+
+#btn-topo.mostrar {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
+#btn-topo svg {
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+#btn-topo:hover svg {
+  transform: scale(1.1);
+  fill: #ffaad4;
+}
+
+.parallax-card-content h3 {
+  margin-bottom: 0px;
+}
