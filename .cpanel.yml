@@ -1,0 +1,6 @@
+# .cpanel.yml para leitura da build e deploy no UOL Host
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/forumdeibfd60c57/public_html/
+    - /bin/cp -R * $DEPLOYPATH
