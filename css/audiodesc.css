@@ -1,0 +1,39 @@
+.audiodesc-video {
+  position: relative;
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.video{
+    width: 100%;
+    border-radius: 12px;
+}
+.instrucao {
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+@media (orientation: portrait) {
+  .audiodesc-main {
+    padding: 10px;
+  }
+
+  video {
+    width: 100%;
+  }
+}
+@media (orientation: landscape) {
+  video {
+    width: 100%;
+    height: 100vh;
+    object-fit: contain;
+  }
+  header {
+    display: none !important;
+  }
+}
