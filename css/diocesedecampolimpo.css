@@ -1,0 +1,201 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#dfe4e7;
+    font-family:Georgia, serif;
+    color:#002d8d;
+}
+
+
+.linha{
+    display:flex;
+    justify-content:space-between;
+    gap:40px;
+
+    width:95%;
+    margin:auto;
+    padding:40px 0;
+
+    border-bottom:3px solid #ff6f00;
+}
+
+.texto-principal{
+    flex:1;
+    font-size: 22px;
+}
+.coluna{
+    font-size: 16px;
+    flex:1;
+}
+
+
+
+
+h1{
+    color:#002d8d;
+    text-align:center;
+    line-height:1.5;
+}
+
+h2{
+    text-align:center;
+    color:#002d8d;
+    margin-bottom:20px;
+    font-size:40px;
+}
+
+h3{
+    color:#ff6f00;
+    margin-bottom:20px;
+}
+
+h4{
+    color:red;
+    text-align:center;
+    margin-top:20px;
+}
+
+p{
+    line-height:1.8;
+    text-align:justify;
+}
+
+.strong-laranja{
+    color:#ff6f00;
+}
+
+.strong-azulescuro{
+    color:#002d8d;
+}
+
+li{
+    margin-bottom:15px;
+}
+
+.imagem{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.imagem img{
+    width:150px;
+}
+
+.imagem-grande{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100%;
+}
+
+.imagem-grande img{
+    width:100%;
+    max-width:400px;
+    border-radius:20px;
+}
+
+.logo{
+    text-align:center;
+}
+
+.logo img{
+    width:220px;
+}
+/* =========================
+   TABLETS
+========================= */
+@media screen and (max-width: 1024px){
+
+    .linha{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    h1{
+        font-size: 2rem;
+    }
+
+    h2{
+        font-size: 2rem;
+    }
+
+    .logo img{
+        width: 180px;
+    }
+
+    .imagem img{
+        width: 120px;
+    }
+
+}
+
+
+/* =========================
+   CELULARES
+========================= */
+@media screen and (max-width: 768px){
+
+    .linha{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        padding: 30px 15px;
+    }
+
+    .coluna{
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .texto-principal{
+        font-size: 16px;
+    }
+
+    h1{
+        font-size: 1.8rem;
+        line-height: 1.4;
+    }
+
+    h2{
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+    }
+
+    h3{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    h4{
+        font-size: 1rem;
+    }
+
+    p{
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    li{
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    .logo img{
+        width: 150px;
+    }
+
+    .imagem img{
+        width: 100px;
+    }
+
+    .imagem-grande img{
+        max-width: 100%;
+    }
+
+}

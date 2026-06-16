@@ -76,7 +76,7 @@
       </div>
 
       <div class="hero-content">
-        <h1>Da Invisibilidade para Visibilidade</h1>
+        <h1>Da invisibilidade à visibilidade</h1>
       </div>
     </section>
 
@@ -108,17 +108,51 @@
     <!-- ===================== EVENTOS ===================== -->
     <section class="eventos">
       <h2>Fique atento!</h2>
-
-      <div class="eventos-grid">
-        <div class="evento-card parallax-card">
-          <div class="parallax-card-content">
-            <a href="#">
-              <img src="../assets/4seminario.jpg" alt="Banner Fórum da inclusão">
-            </a>
-            <h3>Fórum da inclusão</h3>
+      <div class="eventos-container">
+        <div class="eventos-grid">
+          <div class="evento-card parallax-card">
+            <div class="parallax-card-content">
+              <a href="diocesedecampolimpo.html">
+                <img src="../assets/Logo_card_poastroral.png" alt="Pastoral da Pessoa com Deficiência e Neurodivergentes">
+              </a>
+              <h3>Pastoral</h3>
+            </div>
           </div>
         </div>
-      </div>
+        
+        <div class="eventos-grid">
+          <div class="evento-card parallax-card">
+            <div class="parallax-card-content">
+              <a href="https://ninhodaesperanca.org.br" target="_blank">
+                <img src="../assets/logo_ninho da esperanca-transparente.png" alt="Banner Ninho da esperança">
+              </a>
+              <h3>Ninho da esperança</h3>
+            </div>
+          </div>
+        </div>
+
+        <div class="eventos-grid">
+          <div class="evento-card parallax-card">
+            <div class="parallax-card-content">
+              <a class="abrir-calendario" href="#" target="_blank">
+                <img src="../assets/Calendario_eventos_2026.png" alt="Banner Calendário de eventos">
+              </a>
+              <h3>Calendário de eventos</h3>
+            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+          </div>
+        </div>
+
+        <div class="eventos-grid">
+          <div class="evento-card parallax-card">
+            <div class="parallax-card-content">
+              <a class="abrir-calendario" href="#" target="_blank">
+                <img src="../assets/Calendario_pastoral_2026.png" alt="Banner Calendário pastoral">
+              </a>
+              <h3>Calendário pastoral</h3>
+            </div>
+          </div>
+        </div>
+  </div>
     </section>
 
     <!-- ===================== DEPOIMENTOS ===================== -->
@@ -150,7 +184,15 @@
       ↑
     </button>
 
-    <!-- JS externo -->
+    <div id="modalCalendario" class="modal-calendario">
+      <span class="fechar-modal">&times;</span>
+      <img id="imagemModal" src="" alt="Calendário ampliado">
+    </div>
+
+          <!-- JS externo -->
     <script src="../javascript/index.js"></script>
+    <script src="../javascript/eventos.js"></script>
+
+    
   </body>
 </html>
