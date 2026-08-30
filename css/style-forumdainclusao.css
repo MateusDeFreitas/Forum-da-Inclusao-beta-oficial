@@ -83,7 +83,6 @@ header {
   
   .hero-content h1 {
     font-size: 2.5rem;   /* Destaque maior no hero */
-    margin-bottom: 20px;
     text-align: center;  /* Centraliza para impacto */
     color: #ffffff;         /* Mantém contraste alto */
   }
@@ -258,7 +257,7 @@ nav ul li a:hover {
   justify-content: center;
   text-align: left;
   padding: 20px;
-  overflow: hidden;
+  --overflow: hidden;
   color: black;
 }
 
@@ -287,7 +286,7 @@ nav ul li a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(70%); /* escurece a imagem para dar contraste ao texto */
+  filter: brightness(100%); /* escurece a imagem para dar contraste ao texto */
 }
 
 /* Overlay extra (camada escura sobre todas as imagens) */
@@ -309,9 +308,8 @@ nav ul li a:hover {
 
 /* Conteúdo da hero por cima das imagens */
 .hero-content {
-  position: relative;
-  z-index: 2; /* acima do overlay e das imagens */
-  color: #fff; /* texto branco para contraste */
+  height: 10rem;
+
 }
 
 /* Opcional: sombra escura para melhorar contraste do texto */
@@ -332,11 +330,11 @@ nav ul li a:hover {
 .hero-content h1 {
   font-family: "Sora", sans-serif;
   font-weight: 600;
-  margin-top: 35vh;
-  font-size: 4.8rem;   
+  margin-top: 2.5rem;
+  font-size: 4rem;   
   margin-bottom: 20px;
   text-align: center;  
-  color: red;      
+  color: black;      
 }
 
 .hero-content h1 .light {
@@ -645,9 +643,11 @@ nav ul li a:hover {
   transform: translateZ(20px);
   transition: transform 0.2s ease-out;
 }
-
 /* Ajustes para telas bem pequenas */
 @media (max-width: 500px) {
+  .eventos-container{
+    display:block ;
+  }
   .eventos-grid {
     grid-template-columns: 1fr;
     padding: 10px;

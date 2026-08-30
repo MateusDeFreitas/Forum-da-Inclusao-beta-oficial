@@ -2,7 +2,7 @@ const modal = document.getElementById("modalCalendario");
 const modalImg = document.getElementById("imagemModal");
 const fechar = document.querySelector(".fechar-modal");
 
-document.querySelectorAll(".abrir-calendario img").forEach(img => {
+document.querySelectorAll(".abrir-card img").forEach(img => {
 
   img.addEventListener("click", function(e) {
 
@@ -10,6 +10,19 @@ document.querySelectorAll(".abrir-calendario img").forEach(img => {
 
     modal.style.display = "flex";
     modalImg.src = this.src;
+
+  });
+
+});
+
+document.querySelectorAll(".abrir-imagem-sem-logo").forEach(link => {
+
+  link.addEventListener("click", function(e) {
+
+    e.preventDefault();
+
+    modal.style.display = "flex";
+    modalImg.src = this.querySelector(".img_").src;
 
   });
 
