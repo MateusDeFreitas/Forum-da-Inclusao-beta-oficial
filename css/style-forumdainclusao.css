@@ -524,6 +524,7 @@ nav ul li a:hover {
   scrollbar-width: none;
   padding: 10px 20px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .eventos-container::-webkit-scrollbar{
@@ -667,6 +668,8 @@ nav ul li a:hover {
 .depoimentos {
     padding: 50px 20px;
     background-color: #f8f9fa;
+
+
 }
 
 .depoimentos h2 {
@@ -688,6 +691,9 @@ nav ul li a:hover {
     border-radius: 10px;
     width: 300px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 }
 
 .depoimento p {
